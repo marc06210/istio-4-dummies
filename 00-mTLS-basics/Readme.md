@@ -4,7 +4,7 @@ Let's start with a bit of theory, how does the mTLS work? in fact the connection
 containers. when the connection is established a TLS handshake is started and of course the certificates used during
 this handshake are managed by istio, so available in the side car only)
 
-doc here https://istio.io/latest/docs/concepts/security/#mutual-tls-authentication
+The official istio documentation is available [here](https://istio.io/latest/docs/concepts/security/#mutual-tls-authentication).
 
 # istio and mTLS - labs
 
