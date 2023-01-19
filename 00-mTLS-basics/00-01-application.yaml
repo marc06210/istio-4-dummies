@@ -1,0 +1,35 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mgudemo-target
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mgudemo-target
+  template:
+    metadata:
+      labels:
+        app: mgudemo-target
+    spec:
+      containers:
+        - name: mgudemo
+          image: afklm/istio-newa
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: NAME
+              value: "#1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mgudemo-target
+spec:
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: mgudemo-target

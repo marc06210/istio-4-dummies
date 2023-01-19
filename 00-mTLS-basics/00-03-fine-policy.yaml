@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: mgu-target-authz
+  namespace: mgu
+spec:
+  selector:
+    matchLabels:
+      app: httpbin
+  rules:
+    - from:
+        - source:
+            principals: ["cluster.local/ns/mgu/sa/sleep"]
+      to:
+        - operation:
+            methods: ["GET"]
