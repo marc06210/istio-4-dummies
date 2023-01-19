@@ -20,7 +20,7 @@ Each network communication going out or reaching your component will first go th
 
 # Table of content
 
-- (00-mTLS-basics)<br/>
+- [00-mTLS-basics](00-mTLS-basics)<br/>
   Shows the impact of the Mutual TLS feature.
 - 01-non-secured-backend (coming soon)<br/>
   Shows how we can protect an application that do not contain any security feature and force the presence of a JWT in each request.
