@@ -96,7 +96,7 @@ This is resumed in the following picture:
 During this tutorial, we have manually injected the istio sidecar in each of our kube pod registration.
 We can simplify it by telling istio to supervise a namespace.
 
-First let's delete our application **kubectl delete -f 00-01-application.yaml -n mgu**.
+First, let's delete our application **kubectl delete -f ~/istio-1.16.0/samples/httpbin/httpbin.yaml -n mgu**.
 And let's ask istio to analyze our **mgu** namespace: **istioctl analyze -n mgu**.
 We are told that we haven't define anything regarding istio on this namespace.
 So if we know that we will not rely on istio we can mark it as not supervised, this way a
@@ -105,7 +105,7 @@ further analyze will not raise any warning.
 But, we want such supervision, so we simply add a label like mentionned in the warning
 **kubectl label namespace mgu istio-injection=enabled**.
 
-And now, let's just create our application again **kubectl apply -f 00-01-application.yaml -n mgu**.
-We can verify that this pod contains two containers **$kubectl get all -n mgu**.
+And now, let's just create our application again **kubectl apply -f ~/istio-1.16.0/samples/httpbin/httpbin.yaml -n mgu**.
+We can verify that this pod contains two containers **kubectl get pods -n mgu**.
 
 So now, we are able to use simple commands to inject istio sidecar in our pods :)
