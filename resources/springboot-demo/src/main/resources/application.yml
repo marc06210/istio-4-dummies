@@ -1,0 +1,18 @@
+invoked:
+  url: http://localhost:8080/api/hello
+
+
+spring:
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:8001
+#          jwk-set-uri: http://localhost:8000/.well-known/jwks.json
+#          jwk-set-uri: http://localhost:8001/.well-known/jwks.json
+#          jws-algorithms: RS512
+
+logging:
+  level:
+    '[org.springframework.security]': DEBUG
+    '[org.springframework.web]': DEBUG

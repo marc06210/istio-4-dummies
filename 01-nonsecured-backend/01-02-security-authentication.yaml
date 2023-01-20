@@ -1,0 +1,17 @@
+# this section defines how the authentication is done
+# but if no auth header is sent, then this section is not able to deny a request
+apiVersion: "security.istio.io/v1beta1"
+kind: "RequestAuthentication"
+metadata:
+  name: "jwt-example"
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+  jwtRules:
+    - issuer: "http://host.docker.internal:8001"
+      jwksUri: "http://host.docker.internal:8001/.well-known/jwks.json"
+      fromHeaders:
+        - name: x-access-token
+      forwardOriginalToken: true

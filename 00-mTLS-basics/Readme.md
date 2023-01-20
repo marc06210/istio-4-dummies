@@ -106,6 +106,13 @@ But, we want such supervision, so we simply add a label like mentionned in the w
 **kubectl label namespace mgu istio-injection=enabled**.
 
 And now, let's just create our application again **kubectl apply -f ~/istio-1.16.0/samples/httpbin/httpbin.yaml -n mgu**.
-We can verify that this pod contains two containers **kubectl get pods -n mgu**.
+We can verify that this pod contains two containers **kubectl get pods -n mgu**. So, the presence of a simple label is
+able to activate the injection of the istio sidecar containers in any POD, pretty cool :)
 
-So now, we are able to use simple commands to inject istio sidecar in our pods :)
+And now, we are able to use simple commands to inject istio sidecar in our pods :)
+
+# clean up
+
+Here we only need to delete the namespace **mgu**.
+
+So let's do it **kubectl delete ns mgu**
