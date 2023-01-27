@@ -17,7 +17,7 @@ All the samples have been run on a local docker desktop installation with kubern
 Istio 1.16.0 has been installed on the home directory. The components installed are: core, daemon and ingress.
 
 You also need a local OIDC provider for some parts. I personaly use a small Java program, that supports the minimal requirement needed by the
-examples:
+examples (you can find a light OIDC server into the [following directory](resources/oidc-light):
 
 - a endpoint supporting basic auth, that returns a JWT
 - a endpoint with the JWK used to generate the JWT
