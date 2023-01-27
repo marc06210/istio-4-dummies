@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mgutargetdemo
+  namespace: mgu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mgutargetdemo
+  template:
+    metadata:
+      labels:
+        app: mgutargetdemo
+    spec:
+      containers:
+        - name: mgutargetdemo
+          image: afklm/istio-mgu-spring-security-oauth2
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SERVER.SERVLET.CONTEXT-PATH
+              value: "/api"
+            - name: SPRING.SECURITY.OAUTH2.RESOURCE-SERVER.JWT.JWK-SET-URI
+              value: "http://mgu-go-ext-authz.default:8000/.well-known/jwks.json"
+            - name: INVOKED.URL
+              value: "http://mgudemo:8080/api/hello"
+            # - name: SPRING.PROFILES.ACTIVE
+            #   value: userinfo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mgutargetdemo
+  namespace: mgu
+spec:
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: mgutargetdemo
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: mgudemo-gateway
+  namespace: mgu
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mgu
+  namespace: mgu
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - mgudemo-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /api
+      route:
+        - destination:
+            host: mgutargetdemo
+            port:
+              number: 8080

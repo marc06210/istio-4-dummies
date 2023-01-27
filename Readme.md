@@ -24,5 +24,5 @@ Each network communication going out or reaching your component will first go th
   Shows the impact of the Mutual TLS feature.
 - [01-nonsecured-backend](01-nonsecured-backend)<br/>
   Shows how we can protect an application that do not contain any security feature and force the presence of a JWT in each request.
-- 03-ext-authz (coming soon)<br/>
+- 02-ext-authz (coming soon)<br/>
   Shows how we can create our own authorization policy.

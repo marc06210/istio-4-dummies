@@ -1,0 +1,19 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ext-authz
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+  # https://istio.io/latest/docs/reference/config/security/authorization-policy/#Rule-To
+  action: CUSTOM
+  provider:
+    # The provider name must match the extension provider defined in the mesh config.
+    name: mgu-go-ext-authz-grpc
+  rules:
+    # The rules specify when to trigger the external authorizer.
+    - to:
+        - operation:
+            paths: ["/*"]
