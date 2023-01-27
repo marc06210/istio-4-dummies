@@ -16,6 +16,13 @@ All the samples have been run on a local docker desktop installation with kubern
 
 Istio 1.16.0 has been installed on the home directory. The components installed are: core, daemon and ingress.
 
+You also need a local OIDC provider for some parts. I personaly use a small Java program, that supports the minimal requirement needed by the
+examples:
+
+- a endpoint supporting basic auth, that returns a JWT
+- a endpoint with the JWK used to generate the JWT
+- the userinfo enpoint to return a full description of the user with its associated authorities
+
 # A very very short introduction to how istio works
 
 Whenever you add the istio support to one of your POD, there is a sidecar container that is added to your POD. That sidecar container is the istio component.
