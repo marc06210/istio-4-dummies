@@ -26,3 +26,14 @@ Each network communication going out or reaching your component will first go th
   Shows how we can protect an application that do not contain any security feature and force the presence of a JWT in each request.
 - [02-ext-authz](02-ext-authz)<br/>
   Shows how we can create our own authorization policy.
+
+# Activate istio logs
+
+In order to understand and/or debug what happens with istio, we can activate some logs on the istio component.
+
+When running the following command **istioctl proxy-config log $PODID**, we have a picture of each component inside the istio container of our POD and their log level.
+
+If we want to change one level, we can do it like that: **istioctl proxy-config log $PODID --level rbac:debug**. During those tutorials, it might be interesting to
+set to **debug** the levels of **rbac** and **jwt**.
+
+Then you can tail those logs very simply: **kubectl logs -f $PODID -c istio-proxy**.
