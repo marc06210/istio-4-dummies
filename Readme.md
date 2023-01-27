@@ -7,6 +7,9 @@ It relies on a java sample that is in the resources folder. Otherwise we will us
 
 Each folder contains a Readme.md file with instructions and a bit of explainations.
 
+Those tutorials do not make usage of the dashboards that are available when installing istio. You can use them to have a visual representation
+of what is happening live. The istio documentation on those dashboards are clear enough and then not covered here.
+
 # What you need to run the samples
 
 All the samples have been run on a local docker desktop installation with kubernetes enabled.
