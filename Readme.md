@@ -2,7 +2,7 @@
 
 This repository contains walkthrough samples to put the hand in the world of istio. It is mainly oriented on the security part of istio.
 
-It relies on a java sample that is in the resources folder. Otherwise we will use samples provided by istio during its installation, mainly
+It relies on a java samples. You can find them under the **resources** folder. Otherwise we will use samples provided by istio during its installation, mainly
 **sleep** and **httpbin** applications.
 
 Each folder contains a Readme.md file with instructions and a bit of explainations.
