@@ -5,7 +5,7 @@ This repository contains walkthrough samples to put the hand in the world of ist
 It relies on a java samples. You can find them under the **resources** folder. Otherwise we will use samples provided by istio during its installation, mainly
 **sleep** and **httpbin** applications.
 
-Each folder contains a Readme.md file with instructions and a bit of explainations.
+Each folder contains a **Readme.md** file with instructions and a bit of explainations.
 
 Those tutorials do not make usage of the dashboards that are available when installing istio. You can use them to have a visual representation
 of what is happening live. The istio documentation on those dashboards are clear enough and then not covered here.
